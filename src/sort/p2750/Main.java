@@ -26,12 +26,16 @@ public class Main {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
-        BubbleSort bs = new BubbleSort(size, arr);
-        bs.sort();
-        bs.answer();
+        SelectionSort algorithm = new SelectionSort(size, arr);
+        algorithm.sort();
+        algorithm.answer();
     }
 }
 
+/**
+ * 버블 정렬
+ * 시간 복잡도 O(N^2)
+ * */
 class BubbleSort {
 
     private int size;
@@ -54,6 +58,43 @@ class BubbleSort {
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
+            }
+        }
+    }
+
+    public void answer() {
+        for (int i = 0; i < size; ++i) {
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+/**
+ * 선택 정렬
+ * 시간 복잡도 O(N^2)
+ * */
+class SelectionSort {
+
+    private int size;
+    private int[] arr;
+
+    public SelectionSort(int size, int[] arr) {
+        this.size = size;
+        this.arr = arr;
+    }
+
+    public void sort() {
+        for (int i = 0; i < size; ++i) {
+            int minIdx = i;
+            for (int j = i + 1; j < size; ++j) {
+                if (arr[j] < arr[minIdx]) {
+                    minIdx = j;
+                }
+            }
+            if (minIdx != i) {
+                int temp = arr[minIdx];
+                arr[minIdx] = arr[i];
+                arr[i] = temp;
             }
         }
     }
