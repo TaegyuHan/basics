@@ -17,7 +17,7 @@ import java.io.*;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream( Sort.PATH + "/p2750/data/1.txt"));
+        System.setIn(new FileInputStream(Sort.PATH + "/p2750/data/1.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int size = Integer.parseInt(br.readLine());
@@ -26,7 +26,7 @@ public class Main {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
-        SelectionSort algorithm = new SelectionSort(size, arr);
+        InsertionSort algorithm = new InsertionSort(size, arr);
         algorithm.sort();
         algorithm.answer();
     }
@@ -38,8 +38,8 @@ public class Main {
  * */
 class BubbleSort {
 
-    private int size;
-    private int[] arr;
+    private final int size;
+    private final int[] arr;
 
     public BubbleSort(int size, int[] arr) {
         this.size = size;
@@ -75,8 +75,8 @@ class BubbleSort {
  * */
 class SelectionSort {
 
-    private int size;
-    private int[] arr;
+    private final int size;
+    private final int[] arr;
 
     public SelectionSort(int size, int[] arr) {
         this.size = size;
@@ -96,6 +96,41 @@ class SelectionSort {
                 arr[minIdx] = arr[i];
                 arr[i] = temp;
             }
+        }
+    }
+
+    public void answer() {
+        for (int i = 0; i < size; ++i) {
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+/**
+ * 삽입 정렬
+ * 시간 복잡도 O(N^2)
+ * */
+class InsertionSort {
+
+    private final int size;
+    private final int[] arr;
+
+    public InsertionSort(int size, int[] arr) {
+        this.size = size;
+        this.arr = arr;
+    }
+
+    public void sort() {
+        for (int i = 0; i < size; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+
+            arr[j + 1] = key;
         }
     }
 
