@@ -7,7 +7,7 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream(Implementation.PATH + "/p2941/data/2.txt"));
+        System.setIn(new FileInputStream(Implementation.PATH + "/p2941/data/5.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String word = br.readLine();
         CroatiaAlphabet ca = new CroatiaAlphabet(word);
@@ -25,85 +25,39 @@ class CroatiaAlphabet {
     }
 
     public void count() {
-        int idx = 0;
-        while (idx < word.length()) {
-            char alpha = word.charAt(idx);
 
-            if (word.length() == (idx + 1)) {
-                count += 1;
-                break;
-            } // 마지막 카운트는 1개 추가
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
 
-            // C
-            if ('c' == alpha) {
-                if (word.charAt(idx + 1) == '=') {
-                    count += 1;
-                    idx += 2;
+            if (ch == 'c' && i < word.length() - 1) {
+                if (word.charAt(i + 1) == '=' || word.charAt(i + 1) == '-') {
+                    i++;
                 }
-                if (word.charAt(idx) == '-') {
-                    count += 1;
-                    idx += 2;
-                }
-                continue;
             }
-
-            // d
-            if ('d' == alpha) {
-                if (word.charAt(idx + 1) == 'z') {
-                    if (idx + 2 < word.length()) {
-                        if (word.charAt(idx + 2) == '=') {
-                            count += 1;
-                            idx += 3;
-                            continue;
-                        }
+            else if (ch == 'd' && i < word.length() - 1) {
+                if (word.charAt(i + 1) == '-') {
+                    i++;
+                }
+                else if (word.charAt(i + 1) == 'z' && i < word.length() - 2) {
+                    if (word.charAt(i + 2) == '=') {
+                        i += 2;
                     }
                 }
-                if (word.charAt(idx) == '-') {
-                    count += 1;
-                    idx += 2;
-                    continue;
+            }
+            else if ((ch == 'l' || ch == 'n') && i < word.length() - 1) {
+                if (word.charAt(i + 1) == 'j') {
+                    i++;
+                }
+            }
+            else if ((ch == 's' || ch == 'z') && i < word.length() - 1) {
+                if (word.charAt(i + 1) == '=') {
+                    i++;
                 }
             }
 
-            // l
-            if ('l' == alpha) {
-                if (word.charAt(idx + 1) == 'j') {
-                    count += 1;
-                    idx += 2;
-                    continue;
-                }
-            }
-
-            // n
-            if ('n' == alpha) {
-                if (word.charAt(idx + 1) == 'j') {
-                    count += 1;
-                    idx += 2;
-                    continue;
-                }
-            }
-
-            // s
-            if ('s' == alpha) {
-                if (word.charAt(idx + 1) == '=') {
-                    count += 1;
-                    idx += 2;
-                    continue;
-                }
-            }
-
-            // z
-            if ('z' == alpha) {
-                if (word.charAt(idx + 1) == '=') {
-                    count += 1;
-                    idx += 2;
-                    continue;
-                }
-            }
-
-            idx += 1;
-            count += 1;
+            count++;
         }
+
     }
 
     public void answer() {
