@@ -20,12 +20,10 @@ public class Main {
 class Stack {
 
     private final int[] arr;
-    private int arrSize;
     private int index;
 
     Stack(int size) {
         this.index = -1;
-        this.arrSize = size;
         this.arr = new int[size];
     }
 

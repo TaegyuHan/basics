@@ -24,7 +24,7 @@ class CroatiaAlphabet {
         this.word = word;
     }
 
-    public int count() {
+    public void count() {
         int idx = 0;
         while (idx < word.length()) {
             char alpha = word.charAt(idx);
@@ -104,7 +104,6 @@ class CroatiaAlphabet {
             idx += 1;
             count += 1;
         }
-        return count;
     }
 
     public void answer() {

@@ -9,7 +9,7 @@ import java.util.Arrays;
  * <p>
  * BigO : O(4N) <br>
  * 문제의 내용 : 브루트포스 알고리즘 문제 입니다. D()함수를 구현하여 for문으로 적용가능한 곳을 찾는 것이 중점입니다.
- *
+ * <p>
  * 입력 <br>
  */
 public class Main {
@@ -23,7 +23,7 @@ public class Main {
 class SelfNumber {
 
     private final int MAX_NUMBER = 10_000;
-    private boolean[] check = new boolean[MAX_NUMBER + 1];
+    private final boolean[] check = new boolean[MAX_NUMBER + 1];
 
     SelfNumber () {
         Arrays.fill(check, false);  // O(N)
