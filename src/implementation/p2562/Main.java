@@ -1,4 +1,4 @@
-package implementation.p11022;
+package implementation.p2562;
 
 import implementation.Implementation;
 
@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream(Implementation.PATH + "/p11022/data/1.txt"));
+        System.setIn(new FileInputStream(Implementation.PATH + "/p2562/data/1.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         Max max = new Max();
